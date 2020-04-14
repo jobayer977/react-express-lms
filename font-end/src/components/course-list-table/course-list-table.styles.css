@@ -1,0 +1,26 @@
+.tb-title {
+	width: 50%;
+}
+
+.tb-author {
+	width: 20%;
+}
+
+.tb-action {
+	width: 30%;
+}
+
+.action-btn-group {
+	display: flex;
+	justify-content: space-between;
+}
+
+.course-list-content .table th {
+	text-align: center;
+	text-transform: capitalize;
+	color: #3d3d3d;
+}
+
+.tb-author {
+	text-align: left !important;
+}

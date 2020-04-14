@@ -1,0 +1,110 @@
+.teacher-card {
+	text-align: center;
+	padding: 20px 0px;
+	/* box-shadow: 2px 0px 6px #dedede; */
+	/* width: 300px; */
+	margin: 0 auto;
+}
+
+.teacher-avater {
+	position: relative;
+	width: 200px;
+	margin: 0 auto;
+}
+
+.teacher-avater img {
+	max-width: 100%;
+	height: auto;
+	border: 4px solid #17d0cf;
+	border-radius: 50%;
+	padding: 4px;
+	position: relative;
+}
+
+.hover-content {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	margin-left: -65px;
+}
+
+.teacher-link a {
+	height: 35px;
+	width: 35px;
+	line-height: 35px;
+	color: #fff;
+	border: 2px solid #17d0cf;
+	text-align: center;
+	border-radius: 52px;
+	margin-left: 5px;
+}
+
+.teacher-link {
+	display: flex;
+	justify-content: space-between;
+}
+
+.dark-overlay {
+	background: black;
+	height: 183px;
+	margin: 0 auto;
+	width: 183px;
+	position: absolute;
+	top: 9px;
+	left: 9px;
+	border-radius: 100%;
+	opacity: 0;
+}
+
+.teacher-meta {
+	margin-top: 20px;
+}
+
+.teacher-meta h4 {
+	color: #333333;
+	margin-bottom: 30px;
+	font-style: italic;
+	font-size: 22px;
+	font-weight: 300;
+}
+
+.teacher-meta p {
+	font-size: 14px;
+	font-weight: 500;
+	color: #000000;
+}
+
+.teacher-avater:hover .dark-overlay {
+	opacity: 0.6;
+}
+
+.hover-content {
+	top: 50px;
+	opacity: 0;
+}
+
+.teacher-avater:hover .hover-content {
+	top: 45%;
+	opacity: 1;
+}
+
+.teachers-section .section-title {
+	text-align: center !important;
+	margin-bottom: 35px;
+}
+
+.teacher-meta h4 {
+	font-size: 22px;
+	line-height: 34px;
+	width: 60%;
+	margin: 0 auto;
+	font-weight: 400;
+	color: #757575;
+	margin-bottom: 20px;
+}
+
+.teacher-meta p {
+	margin-top: 15px;
+	font-weight: 500;
+	color: #727272;
+}

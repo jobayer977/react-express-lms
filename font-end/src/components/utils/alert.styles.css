@@ -1,0 +1,40 @@
+.custom-danger-alert {
+	font-size: 12px;
+	color: #ff5e3a;
+	margin-bottom: 5px;
+	margin-top: -15px;
+	text-align: left;
+}
+.custom-alert {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: #19212b;
+	color: #ffffff;
+	border-radius: 5px;
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: 400;
+	word-spacing: -1px;
+}
+.alert-icon {
+	display: inline-block;
+	background: #00bfa5;
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	margin-right: 10px;
+	color: #000;
+	font-weight: 700;
+	line-height: 25px;
+	text-align: center;
+	font-size: 12px;
+	height: 20px;
+	width: 20px;
+	line-height: 22px;
+}
+.custom-alert.custom-alert-danger .alert-icon {
+	background: #f44336 !important;
+	color: #fff !important;
+}

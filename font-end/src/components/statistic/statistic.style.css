@@ -1,0 +1,41 @@
+.statistics {
+	width: 240px;
+	background: #cac9c9;
+	border-radius: 5px;
+	display: flex;
+	height: 80px;
+	justify-content: space-evenly;
+	align-items: center;
+	text-align: center;
+	margin-right: 10px;
+}
+
+.statistics h1 {
+	color: #fff;
+	font-size: 38px;
+	font-weight: 800;
+	width: 40%;
+	margin: 0;
+}
+
+.statistics p {
+	color: #f9f9f9;
+	width: 50%;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: left;
+	margin: 0;
+}
+
+.st-danger {
+	background-color: #f1536e !important;
+}
+.st-warning {
+	background-color: #fda006 !important;
+}
+.st-primary {
+	background-color: #3da5f4 !important;
+}
+.st-success {
+	background-color: #00c689 !important;
+}

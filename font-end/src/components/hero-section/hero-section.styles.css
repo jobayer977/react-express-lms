@@ -1,0 +1,48 @@
+.hero-block {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.hero-block:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 275px;
+	width: 100%;
+	z-index: -1;
+	background: url(http://jthemes.org/html/genius-course/assets/img/banner/brt-1.jpg);
+	background-size: cover;
+}
+.hero-content {
+	margin: 0;
+}
+.hero-block:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 0;
+	height: 275px;
+	width: 100%;
+	background: #000;
+	opacity: 0.5;
+	z-index: -1;
+}
+.hero-content h1 {
+	color: #fff;
+	font-size: 38px;
+	color: #fff;
+	font-weight: 300;
+}
+.hero-content span {
+	font-weight: 700;
+}
+
+.hero-content p {
+	color: #e4e4e4;
+	letter-spacing: 1px;
+	font-size: 14px;
+	font-weight: 400;
+}

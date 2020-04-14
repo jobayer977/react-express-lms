@@ -1,0 +1,45 @@
+.section-title {
+	margin-bottom: 20px;
+	text-align: left !important;
+}
+
+span.subtitle {
+	margin-left: 42px;
+	color: #a9a3a3;
+	letter-spacing: 7px;
+	position: relative;
+	text-transform: uppercase;
+}
+.section-title .subtitle:before,
+.section-title .subtitle:after {
+	content: ".";
+	font-size: 70px;
+	left: -45px;
+	pointer-events: none;
+	position: absolute;
+	text-shadow: rgba(0, 0, 0, 0) 0px 0px;
+	top: -10px;
+	line-height: 0;
+	color: #17d0cf;
+	text-shadow: 15px 0 #17d0cf;
+}
+.section-title .subtitle:after {
+	right: -28px;
+	left: inherit;
+}
+.section-title h2 {
+	font-size: 55px;
+	font-weight: 300;
+	color: #333333;
+}
+.section-title h2 span {
+	font-weight: 700;
+}
+.medium-size.section-title {
+	font-size: 12px;
+}
+
+.medium-size.section-title h2 {
+	font-size: 30px;
+	margin-top: 10px;
+}

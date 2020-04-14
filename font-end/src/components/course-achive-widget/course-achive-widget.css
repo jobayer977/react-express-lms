@@ -1,0 +1,28 @@
+.course-achieve-widget {
+	margin: 30px 0px;
+}
+
+.course-achieve-widget h4 {
+	font-size: 24px;
+	font-weight: 400;
+	text-transform: capitalize;
+	margin-bottom: 15px;
+}
+
+.course-achieve-widget li {
+	display: inline-block;
+	width: 100%;
+	padding: 15px 0px;
+}
+
+.course-achieve-widget i {
+	margin-right: 10px;
+	height: 20px;
+	width: 20px;
+	background: linear-gradient(to right, #17d0cf 51%, #01a6fd 100%);
+	line-height: 20px;
+	text-align: center;
+	font-size: 10px;
+	color: #fff;
+	border-radius: 50%;
+}

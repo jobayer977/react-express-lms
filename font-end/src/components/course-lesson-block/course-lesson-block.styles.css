@@ -1,0 +1,105 @@
+.course-lesson-block .card-header {
+	align-items: center;
+	display: flex;
+}
+
+.course-lesson-block .card-header span {
+	font-size: 16px;
+	color: #656565;
+	font-weight: 600;
+}
+
+.course-lesson-block .card-header {
+	background: #fff !important;
+}
+.course-lesson-block i {
+	height: 20px;
+	width: 20px;
+	line-height: 22px;
+	background: gainsboro;
+	font-size: 16px;
+	border-radius: 50%;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+}
+.course-lesson-block .card-header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.course-lesson-block .card-header strong {
+	font-size: 25px;
+	margin-right: 10px;
+	color: #17d0cf;
+}
+
+.course-lesson-block .card-header span {
+	display: flex;
+	align-items: center;
+}
+
+.course-lesson-block .card-body li {
+	padding: 15px 0px;
+	border-bottom: 1px solid #dfdfdf;
+}
+
+.course-lesson-block .card-body {
+	padding: 0;
+	margin: 0;
+}
+
+.course-lesson-block .card-body ul {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.course-lesson-block .card-body li:last-child {
+	border: none;
+}
+
+.course-lesson-block .card-body li i {
+	color: #1edec1;
+	padding: 0px 20px;
+	background: none;
+	margin-right: 10px;
+}
+
+.course-lesson-block .card-body li span {
+	font-size: 15px;
+	color: #000;
+	font-weight: 400;
+	letter-spacing: 1px;
+}
+.course-lesson-block h1 {
+	font-size: 23px;
+	/* background: linear-gradient(to right, #17d0cf 51%, #01a6fd 100%); */
+	padding: 10px 10px;
+	font-weight: 400;
+	text-transform: capitalize;
+	color: #17d0cf;
+}
+
+.accordion > .card > .card-header {
+	border-bottom: none;
+}
+
+.course-lesson-block .card-body li span {
+	display: inline-block;
+	letter-spacing: 0;
+	padding: 0px 5px;
+	text-align: left;
+}
+
+.course-lesson-block .card-body li {
+	display: flex;
+	align-items: center;
+}
+.course-lesson-block {
+	height: 80vh;
+}
+.course-lesson-list {
+	height: 90%;
+	overflow-y: scroll;
+}

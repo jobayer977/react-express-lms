@@ -1,0 +1,29 @@
+.course-detail-page {
+	padding: 100px 0px;
+}
+
+.course-info-widget h1 {
+	font-size: 28px;
+	font-weight: 300;
+	margin-bottom: 15px;
+	color: #545353;
+}
+
+.course-info-widget strong {
+	font-weight: 600;
+	color: #17d0cf;
+	margin-left: 10px;
+	font-size: 30px;
+}
+
+.course-detail-sidebar li {
+	border-bottom: 1px solid #f3f3f3;
+	padding: 10px 0px;
+	color: #717171;
+	display: flex;
+	justify-content: space-between;
+}
+
+.course-info-widget .custom-button button {
+	display: block;
+}

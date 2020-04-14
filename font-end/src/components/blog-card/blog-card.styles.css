@@ -1,0 +1,76 @@
+.blog-card img {
+	width: 100%;
+	height: auto;
+	transition: 1s all ease-in-out;
+	overflow: hidden;
+}
+
+.blog-card {
+	background: #fff;
+	overflow: hidden;
+	transition: 1s all ease-in-out;
+}
+
+.best-course-text {
+	padding: 15px;
+}
+
+.best-course-text h3 a {
+	font-size: 18px;
+	color: #000;
+	margin-bottom: 20px;
+}
+.blog-title a {
+	font-size: 18px;
+	color: #333333;
+	font-weight: 500;
+	line-height: 25px;
+}
+
+.blog-card .course-price {
+	top: 50%;
+	/* height: 34px; */
+}
+.best-course-pic-text {
+	padding-bottom: 40px;
+}
+.best-course-pic-text {
+	padding-bottom: 40px;
+}
+
+.blog-text {
+	padding: 20px 10px;
+}
+
+.blog-card .course-meta {
+	padding: 0px 10px;
+}
+.course-meta span {
+	color: #7d7d7d;
+}
+
+.course-meta {
+	color: #7d7d7d !important;
+	font-weight: 400;
+}
+.blog-cat {
+	left: 10px;
+	font-weight: 700;
+	padding: 5px 15px;
+	border-radius: 4px;
+	position: absolute;
+	background: linear-gradient(to right, #17d0cf 51%, #01a6fd 100%);
+	color: #fff;
+	bottom: 20px;
+}
+
+.best-course-pic {
+	position: relative;
+}
+
+.blog-card:hover {
+	box-shadow: 10px 10px 20px 1px rgba(0, 0, 0, 0.1);
+}
+.blog-card:hover.blog-card img {
+	transform: scale(1.1);
+}

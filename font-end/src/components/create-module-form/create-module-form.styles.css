@@ -1,0 +1,14 @@
+.create-module-form input,
+.create-module-form textarea {
+	display: block;
+	width: 70%;
+	margin-bottom: 20px;
+	padding: 10px 20px;
+	background: #f2f2fa;
+	border: none;
+	color: #000;
+	font-size: 16px;
+	letter-spacing: 1px;
+	outline: none;
+	padding: 10px;
+}

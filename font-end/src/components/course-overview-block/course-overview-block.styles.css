@@ -1,0 +1,41 @@
+.course-overview-thumbnail img {
+	width: 100%;
+	height: auto;
+}
+
+.course-overview-content {
+	padding: 20px 0px;
+}
+
+.course-overview-meta {
+	display: flex;
+	justify-content: space-between;
+	height: 50px;
+	align-items: center;
+}
+
+.course-overview-meta p {
+	font-size: 16px;
+	color: #636363;
+	margin: 0;
+}
+
+.course-overview-content p {
+	color: #2d2d2d;
+}
+
+.course-overview-content h1 {
+	font-size: 34px;
+	font-weight: 700;
+	color: #444444;
+	margin-bottom: 20px;
+	text-transform: capitalize;
+}
+.description {
+	font-size: 16px;
+	letter-spacing: 1px;
+	font-weight: 400;
+	line-height: 28px;
+	text-align: justify;
+	margin-bottom: 20px;
+}

@@ -1,0 +1,37 @@
+.dashboard-profile-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.dashboard-profile-card {
+	text-align: center;
+}
+
+.dashboard-profile-card img {
+	height: 150px;
+	width: 150px;
+	border-radius: 100%;
+	margin-bottom: 30px;
+	border: 2px solid #11c4dd;
+	padding: 5px;
+}
+
+.profile-content h4 {
+	font-size: 28px;
+	color: #656565;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.profile-content p {
+	margin: 0;
+	color: #929596;
+	font-size: 14px;
+	line-height: 25px;
+}
+.dashboard-profile-card .custom-button button {
+	margin-top: 20px;
+	padding: 10px 50px;
+	outline: none;
+}
