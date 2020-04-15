@@ -1,27 +1,45 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import CustomButton from "../custom-button/CustomButton";
-import { getUserData } from "../../redux/user/user.actions";
 import { alertAction } from "../../redux/alert/alertAction";
 import { connect } from "react-redux";
 import {
 	signinwithemailpassword,
-	signInwithGoogle,
+	signInWithGoogle,
 } from "../../firebase/firebase.utils";
 import Alert from "../utils/Alert";
+import { signIn, authwithgoogle } from "../../redux/auth/auth.actions";
+import { MiniPulseLoaderSpinner } from "../utils/Spinner";
 
-const SignInBlock = ({ toggleHandler, alertAction }) => {
+const SignInBlock = ({
+	toggleHandler,
+	alertAction,
+	signIn,
+	authwithgoogle,
+}) => {
 	const { register, handleSubmit, errors } = useForm();
+	const [loading, setLoading] = useState(false);
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
 	});
 	const onSubmithandler = async () => {
-		const signIn = await signinwithemailpassword(
+		setLoading(true);
+		const signInInfo = await signinwithemailpassword(
 			formData.email,
 			formData.password
 		);
-		alertAction(signIn.msg, signIn.type);
+		console.log(signInInfo);
+
+		if (signInInfo) {
+			if (signInInfo.response) {
+				const { email, uid } = signInInfo.response;
+				signIn({ email, uid });
+			}
+			alertAction(signInInfo.fireAlert.msg, signInInfo.fireAlert.type);
+			setFormData({ email: "", password: "" });
+			setLoading(false);
+		}
 	};
 	const onChangeHandler = (e) => {
 		setFormData({
@@ -29,8 +47,10 @@ const SignInBlock = ({ toggleHandler, alertAction }) => {
 			[e.target.name]: e.target.value,
 		});
 	};
-	const signInWithGoogleHandler = () => {
-		signInwithGoogle();
+	const signInWithGoogleHandler = async () => {
+		const signInInfo = await signInWithGoogle();
+		authwithgoogle({ ...signInInfo.response });
+		alertAction(signInInfo.fireAlert.msg, signInInfo.fireAlert.type);
 	};
 	return (
 		<div className="auth-form-block">
@@ -55,11 +75,15 @@ const SignInBlock = ({ toggleHandler, alertAction }) => {
 					onChange={onChangeHandler}
 				/>
 				{errors.patientName && "Patient Name is require"}
-				<CustomButton type="submit">Login</CustomButton>
+				<CustomButton type="submit">
+					{loading ? <MiniPulseLoaderSpinner loading={loading} /> : "Sign In"}
+				</CustomButton>
 			</form>
 			<h4 onClick={() => toggleHandler()}>Create an account ?</h4>
 		</div>
 	);
 };
 
-export default connect(null, { getUserData, alertAction })(SignInBlock);
+export default connect(null, { alertAction, signIn, authwithgoogle })(
+	SignInBlock
+);

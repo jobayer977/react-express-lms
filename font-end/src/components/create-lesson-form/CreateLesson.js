@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./create-lessson.styles.css";
 import { useForm } from "react-hook-form";
 import CustomButton from "../custom-button/CustomButton";
-import CustomTitle from "../custom-title/CustomTitle";
 
 const CreateLessonForm = () => {
 	const { register, handleSubmit, errors } = useForm();

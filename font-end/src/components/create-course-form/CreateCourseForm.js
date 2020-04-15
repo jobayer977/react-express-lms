@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import "./create-course-form.styles.css";
 import { useForm } from "react-hook-form";
+import { connect } from "react-redux";
 import CustomButton from "../custom-button/CustomButton";
 import CustomTitle from "../custom-title/CustomTitle";
+import { createCourse } from "../../redux/course/course.actions";
+import Alert from "../utils/Alert";
 
-const CreateCourseForm = () => {
+const CreateCourseForm = ({ createCourse }) => {
 	const { register, handleSubmit, errors } = useForm();
-	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
-	});
-	const onSubmithandler = (e) => {
-		console.log(formData);
-		e.preventDefault();
+	const [formData, setFormData] = useState(null);
+	const onSubmithandler = () => {
+		createCourse({ ...formData });
 	};
 	const onChangeHandler = (e) => {
 		setFormData({
@@ -28,6 +27,7 @@ const CreateCourseForm = () => {
 				medium
 			/>
 			<form onSubmit={handleSubmit(onSubmithandler)}>
+				<Alert />
 				<input
 					type="text"
 					name="title"
@@ -73,4 +73,4 @@ const CreateCourseForm = () => {
 	);
 };
 
-export default CreateCourseForm;
+export default connect(null, { createCourse })(CreateCourseForm);

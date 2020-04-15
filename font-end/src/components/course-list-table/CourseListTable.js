@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./course-list-table.styles.css";
 import CustomButton from "../custom-button/CustomButton";
 import CustomTitle from "../custom-title/CustomTitle";
-import CreateModuleForm from "../create-module-form/CreateModuleForm";
-import CreateLessonForm from "../create-lesson-form/CreateLesson";
 import { Link } from "react-router-dom";
 
 const CourseListTable = () => {
@@ -11,7 +9,7 @@ const CourseListTable = () => {
 		<div className="course-list-table">
 			<CustomTitle thin="Course List" tagline="List of all courses" medium />
 			<div className="course-list-content">
-				<table class="table">
+				<table className="table">
 					<thead>
 						<tr>
 							<th scope="col-md-4" className="tb-title">

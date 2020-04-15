@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./header-block-styles.css";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-const HeaderBlock = () => {
+import { logout } from "../../redux/auth/auth.actions";
+import { auth } from "../../firebase/firebase.utils";
+import { connect } from "react-redux";
+
+const HeaderBlock = ({ authState, logout }) => {
 	const [scrollPosition, setSrollPosition] = useState(0);
 	useEffect(() => {
 		window.addEventListener("scroll", handleScroll, { passive: true });
@@ -13,6 +17,10 @@ const HeaderBlock = () => {
 	const handleScroll = () => {
 		const position = window.pageYOffset;
 		setSrollPosition(position);
+	};
+	const handlerSignOut = () => {
+		auth.signOut();
+		logout();
 	};
 	return (
 		<header
@@ -26,14 +34,17 @@ const HeaderBlock = () => {
 					</div>
 					<div className="navigation">
 						<div className="option">
-							<Link to="/auth">Sign In</Link>
+							<Link to="/dashboard">Dashboard</Link>
 						</div>
-						<div className="option">
-							<Link to="/student-dashboard">Dashboard</Link>
-						</div>
-						<div className="option">
-							<Link to="/admin-dashboard">Admin Dashboard</Link>
-						</div>
+						{authState.isAuthenticated ? (
+							<div className="option" onClick={handlerSignOut}>
+								Logout
+							</div>
+						) : (
+							<div className="option">
+								<Link to="/auth">Sign In</Link>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
@@ -41,4 +52,8 @@ const HeaderBlock = () => {
 	);
 };
 
-export default HeaderBlock;
+const mapStateToProps = (state) => ({
+	authState: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(HeaderBlock);

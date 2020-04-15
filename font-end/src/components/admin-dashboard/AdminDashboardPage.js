@@ -10,10 +10,11 @@ import EventRoundedIcon from "@material-ui/icons/EventRounded";
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-import DashboardBlock from "../../components/dashboard-block/DashboardBlock";
-import CustomTitle from "../../components/custom-title/CustomTitle";
-import CreateCourseForm from "../../components/create-course-form/CreateCourseForm";
-import CourseListBlock from "../../components/course-list-block/CourseListBlock";
+
+import DashboardBlock from "../dashboard-block/DashboardBlock";
+import CustomTitle from "../custom-title/CustomTitle";
+import CreateCourseForm from "../create-course-form/CreateCourseForm";
+import CourseListBlock from "../course-list-block/CourseListBlock";
 
 const AdminDashboardPage = () => {
 	useEffect(() => {

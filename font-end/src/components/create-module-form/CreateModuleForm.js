@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./create-module-form.styles.css";
 import { useForm } from "react-hook-form";
 import CustomButton from "../custom-button/CustomButton";
-import CustomTitle from "../custom-title/CustomTitle";
 
 const CreateModuleForm = () => {
 	const { register, handleSubmit, errors } = useForm();

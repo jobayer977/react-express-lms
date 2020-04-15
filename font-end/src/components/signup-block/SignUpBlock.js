@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import CustomButton from "../custom-button/CustomButton";
-import { signUpNewUser } from "../../firebase/firebase.utils";
+import { signUpNewUser, signInWithGoogle } from "../../firebase/firebase.utils";
 import Alert from "../utils/Alert";
 import { alertAction } from "../../redux/alert/alertAction";
+import { registerUser, authwithgoogle } from "../../redux/auth/auth.actions";
 import { connect } from "react-redux";
+import { MiniPulseLoaderSpinner } from "../utils/Spinner";
 
-const SignUpBlock = ({ toggleHandler, alertAction }) => {
+const SignUpBlock = ({
+	toggleHandler,
+	alertAction,
+	registerUser,
+	authwithgoogle,
+}) => {
 	const { register, handleSubmit, errors } = useForm();
 	const [formData, setFormData] = useState(null);
+	const [loading, setLoading] = useState(false);
 
 	const onChangeHandler = (e) => {
 		setFormData({
@@ -18,6 +26,7 @@ const SignUpBlock = ({ toggleHandler, alertAction }) => {
 	};
 
 	const onSubmithandler = async () => {
+		setLoading(true);
 		if (formData.password1 !== formData.password2) {
 			alertAction("Password doesn't match", "danger");
 		} else {
@@ -26,13 +35,25 @@ const SignUpBlock = ({ toggleHandler, alertAction }) => {
 				formData.password1,
 				formData.name
 			);
-			alertAction(signUp.msg, signUp.type);
+			if (signUp) {
+				registerUser({ ...signUp.response });
+				alertAction(signUp.fireAlert.msg, signUp.fireAlert.type);
+				setLoading(false);
+			}
 		}
+	};
+
+	const signInWithGoogleHandler = async () => {
+		const signInInfo = await signInWithGoogle();
+		authwithgoogle({ ...signInInfo.response });
+		alertAction(signInInfo.fireAlert.msg, signInInfo.fireAlert.type);
 	};
 	return (
 		<div className="auth-form-block">
 			<h3>Sign Up</h3>
-			<CustomButton signInWithGoogle>Sign Up With Google</CustomButton>
+			<CustomButton signInWithGoogle onClick={signInWithGoogleHandler}>
+				Sign Up With Google
+			</CustomButton>
 			<form onSubmit={handleSubmit(onSubmithandler)}>
 				<Alert />
 				<input
@@ -64,11 +85,15 @@ const SignUpBlock = ({ toggleHandler, alertAction }) => {
 					onChange={onChangeHandler}
 				/>
 				{errors.patientName && "Patient Name is require"}
-				<CustomButton type="submit">Sign Up</CustomButton>
+				<CustomButton type="submit">
+					{loading ? <MiniPulseLoaderSpinner loading={loading} /> : "Sign Up"}
+				</CustomButton>
 			</form>
 			<h4 onClick={toggleHandler}>Already have an account ?</h4>
 		</div>
 	);
 };
 
-export default connect(null, { alertAction })(SignUpBlock);
+export default connect(null, { alertAction, registerUser, authwithgoogle })(
+	SignUpBlock
+);

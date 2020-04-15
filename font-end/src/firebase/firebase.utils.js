@@ -17,21 +17,42 @@ const firebaseAlert = (msg, type) => {
 
 //Sign in with GOOGLE popup
 const provider = new firebase.auth.GoogleAuthProvider();
-export const signInwithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = async () => {
+	try {
+		const res = await firebase.auth().signInWithPopup(provider);
+		const response = {
+			uid: res.user.uid,
+			displayName: res.user.displayName,
+			email: res.user.email,
+			avatar: res.user.photoURL,
+		};
+		firebaseAlert("Logged In", "success");
+		return { fireAlert, response };
+	} catch (e) {
+		firebaseAlert(e.message, "danger");
+		return { fireAlert };
+	}
+};
 
 //Sign in with email and password
 export const signinwithemailpassword = async (email, password) => {
 	try {
-		await firebase.auth().signInWithEmailAndPassword(email, password);
+		const res = await firebase
+			.auth()
+			.signInWithEmailAndPassword(email, password);
+		const response = {
+			uid: res.user.uid,
+			email: res.user.email,
+		};
 		firebaseAlert("Logged In", "success");
-		return fireAlert;
+		return { fireAlert, response };
 	} catch (e) {
 		firebaseAlert(e.message, "danger");
-		return fireAlert;
+		return { fireAlert };
 	}
 };
 
-//Create User with Email and Password
+//Sign Up with email and password
 export const signUpNewUser = async (email, password, name) => {
 	try {
 		const res = await firebase
@@ -41,15 +62,19 @@ export const signUpNewUser = async (email, password, name) => {
 			...res.user,
 			displayName: name,
 		};
+		const response = {
+			uid: res.user.uid,
+			displayName: name,
+			email: res.user.email,
+			avatar: res.user.photoURL,
+		};
 		createProfileDocument(newUser);
 		firebaseAlert("Account created", "success");
-		return fireAlert;
+		return { fireAlert, response };
 	} catch (err) {
 		firebaseAlert(err.message, "danger");
-		return fireAlert;
+		return { fireAlert };
 	}
-
-	// 01820261072
 };
 
 // Store To Database

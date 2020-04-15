@@ -9,11 +9,29 @@ const override = css`
 	border-color: #ff5e3a;
 	text-align: center;
 `;
+const inButtonLoader = css`
+	display: block;
+	margin: 0 auto;
+	border-color: #ffffff;
+	text-align: center;
+`;
 
 export const PulseLoaderSpinner = (props) => {
 	return (
 		<Fragment>
-			<PulseLoader css={override} size={30} color={"#09e9bf"} loading={true} />
+			<PulseLoader css={override} size={30} color={"#ff5e3a"} loading={true} />
+		</Fragment>
+	);
+};
+export const MiniPulseLoaderSpinner = (props) => {
+	return (
+		<Fragment>
+			<PulseLoader
+				css={inButtonLoader}
+				size={20}
+				color={"#ffffff"}
+				loading={true}
+			/>
 		</Fragment>
 	);
 };

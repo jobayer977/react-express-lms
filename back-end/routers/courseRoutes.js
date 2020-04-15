@@ -22,7 +22,7 @@ router.post("/", auth, async (req, res) => {
 		const user = await User.findOne({ uid: res.authToken.id });
 		if (user.membership !== "student") {
 			res.json({
-				msg: "You don't create Courses",
+				errors: "You don't create Courses",
 			});
 		}
 		const course = new Course({

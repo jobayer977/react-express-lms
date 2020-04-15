@@ -7,7 +7,7 @@ const app = express();
 
 //MIDDLEWARE
 app.use(express.json({ extended: false }));
-// app.use(cors());
+app.use(cors());
 
 //ROUTES
 app.use("/api/user", require("./routers/userRoutes"));
