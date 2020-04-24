@@ -5,6 +5,7 @@ require("dotenv").config();
 
 // Init
 const app = express();
+useNewUrlParser: true;
 
 //MIDDLEWARE
 app.use(express.json({ extended: false }));
@@ -38,5 +39,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(process.env.PORT || 4000, function () {
-	console.log("Express server listening on port 9000 dev mode");
+	console.log("Express server listening on port 4000");
 });
