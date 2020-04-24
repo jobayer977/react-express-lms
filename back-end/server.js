@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
+// Init
 const app = express();
 
 //MIDDLEWARE
@@ -28,8 +29,12 @@ mongoose.connect(
 	}
 );
 
+//App listen
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static("../front-end/build"));
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "../front-end/build", "index.html"));
+	});
 }
 
 app.listen(process.env.PORT || 4000, function () {
