@@ -1,38 +1,32 @@
 {
-  "name": "mern-stack-shopx",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "engines": {
-    "node": "v10.15.0"
-  },
-  "scripts": {
-    "install-backEnd": "cd back-end && npm install",
-    "install-client": "cd front-end && npm install",
-    "start": "cd back-end && node server.js",
-    "build": "cd front-end && npm run build",
-    "heroku-postbuild": "npm run install-backEnd && npm run install-client && npm run build",
-    "server": "npm start --prefix back-end",
-    "client": "npm start --prefix front-end",
-    "dev": "concurrently \"npm run server \" \"npm run client\" "
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "concurrently": "^5.0.2",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-validator": "^6.3.1",
-    "gravatar": "^1.8.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.9",
-    "multer": "^1.4.2",
-    "nodemon": "^2.0.2",
-    "reactjs-popup": "^1.5.0",
-    "request": "^2.88.0"
-  }
+	"name": "mernstack-hotelbooking-system",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"engines": {
+		"node": "v10.15.0"
+	},
+	"scripts": {
+		"install-backEnd": "cd back-end && npm install",
+		"install-client": "cd front-end && npm install",
+		"start": "cd back-end && node server.js",
+		"build": "cd front-end && npm run build",
+		"heroku-postbuild": "npm run install-backEnd && npm run install-client && npm run build",
+		"server": "npm start --prefix back-end",
+		"client": "npm start --prefix front-end",
+		"dev": "concurrently \"npm run server \" \"npm run client\" "
+	},
+	"repository": {
+		"type": "",
+		"url": ""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^5.1.0",
+		"cors": "^2.8.5",
+		"nodemon": "^2.0.3",
+		"request": "^2.88.2"
+	}
 }
