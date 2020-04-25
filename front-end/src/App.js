@@ -39,12 +39,18 @@ function App({ authState: { isAuthenticated } }) {
 					path="/auth"
 					render={() => (isAuthenticated ? <Redirect to="/" /> : <AuthPage />)}
 				/>
-				<Route path="/lesson" component={CourseLessonPage} />
 				<Route path="/dashboard" component={DashboardPage} />
-				<Route path="/course-module-action" component={ModuleActionPage} />
-				<Route path="/course-lesson-action" component={LessonActionPage} />
 				<Route
-					path="/course-lesson-note-update"
+					path="/course-module-action/:courseId"
+					component={ModuleActionPage}
+				/>
+				<Route path="/lesson" component={CourseLessonPage} />
+				<Route
+					path="/course-lesson-action/:courseId/:moduleId"
+					component={LessonActionPage}
+				/>
+				<Route
+					path="/course-lesson-note-update/:courseId/:moduleId/:lessonId"
 					component={UpdateLessonTeacherNotePage}
 				/>
 			</Switch>

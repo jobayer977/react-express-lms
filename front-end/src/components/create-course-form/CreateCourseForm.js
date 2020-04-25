@@ -9,9 +9,22 @@ import Alert from "../utils/Alert";
 
 const CreateCourseForm = ({ createCourse }) => {
 	const { register, handleSubmit, errors } = useForm();
-	const [formData, setFormData] = useState(null);
+	const [formData, setFormData] = useState({
+		title: "",
+		thumbnail: "",
+		price: "",
+		author: "",
+		description: "",
+	});
 	const onSubmithandler = () => {
 		createCourse({ ...formData });
+		setFormData({
+			title: "",
+			thumbnail: "",
+			price: "",
+			author: "",
+			description: "",
+		});
 	};
 	const onChangeHandler = (e) => {
 		setFormData({
@@ -19,6 +32,7 @@ const CreateCourseForm = ({ createCourse }) => {
 			[e.target.name]: e.target.value,
 		});
 	};
+	const { title, thumbnail, price, author, description } = formData;
 	return (
 		<div className="create-course-form">
 			<CustomTitle
@@ -32,6 +46,7 @@ const CreateCourseForm = ({ createCourse }) => {
 					type="text"
 					name="title"
 					ref={register({ required: true })}
+					value={title}
 					placeholder="Course Title"
 					onChange={onChangeHandler}
 				/>
@@ -40,6 +55,7 @@ const CreateCourseForm = ({ createCourse }) => {
 					type="text"
 					name="thumbnail"
 					ref={register({ required: true })}
+					value={thumbnail}
 					placeholder="Thumbnail Link"
 					onChange={onChangeHandler}
 				/>
@@ -48,6 +64,7 @@ const CreateCourseForm = ({ createCourse }) => {
 					type="text"
 					name="price"
 					ref={register({ required: true })}
+					value={price}
 					placeholder="Price"
 					onChange={onChangeHandler}
 				/>
@@ -56,6 +73,7 @@ const CreateCourseForm = ({ createCourse }) => {
 					type="text"
 					name="author"
 					ref={register({ required: true })}
+					value={author}
 					placeholder="Author"
 					onChange={onChangeHandler}
 				/>
@@ -64,10 +82,11 @@ const CreateCourseForm = ({ createCourse }) => {
 					name="description"
 					rows="3"
 					ref={register({ required: true })}
+					value={description}
 					placeholder="Description in Bangle"
 					onChange={onChangeHandler}></textarea>
 				{errors.description && "description require"}
-				<CustomButton type="submit">Login</CustomButton>
+				<CustomButton type="submit">Create</CustomButton>
 			</form>
 		</div>
 	);

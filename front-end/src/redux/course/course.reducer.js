@@ -2,11 +2,12 @@ import {
 	CREATE_COURSE,
 	CREATE_COURSE_ERROR,
 	GET_ALL_COURSE,
+	UPDATE_MODULE,
 } from "./course.types";
 
 const initState = {
 	loading: true,
-	course: [],
+	data: [],
 };
 
 const courseReducer = (state = initState, action) => {
@@ -14,7 +15,17 @@ const courseReducer = (state = initState, action) => {
 		case CREATE_COURSE:
 			return {
 				...state,
-				course: [...state.course, action.payload],
+				data: [...state.data, action.payload],
+				loading: false,
+			};
+		case UPDATE_MODULE:
+			return {
+				...state,
+				data: state.data.map((x) =>
+					x._id === action.payload._id
+						? { ...x, outline: action.payload.outline }
+						: x
+				),
 				loading: false,
 			};
 		case CREATE_COURSE_ERROR:
@@ -26,7 +37,7 @@ const courseReducer = (state = initState, action) => {
 			return {
 				...state,
 				loading: false,
-				course: action.payload,
+				data: action.payload,
 			};
 		default:
 			return state;

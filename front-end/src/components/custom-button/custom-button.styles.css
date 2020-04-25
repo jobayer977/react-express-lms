@@ -15,3 +15,11 @@
 .signinwithgoogle.custom-button button {
 	background: #4286f5 !important;
 }
+.custom-btn-group {
+	display: flex !important;
+	margin-top: 25px;
+}
+
+.custom-btn-group button {
+	margin-right: 10px !important;
+}

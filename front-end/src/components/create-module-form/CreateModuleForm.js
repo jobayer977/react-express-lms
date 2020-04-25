@@ -1,17 +1,22 @@
 import React, { useState } from "react";
 import "./create-module-form.styles.css";
 import { useForm } from "react-hook-form";
+import { useParams, Link } from "react-router-dom";
 import CustomButton from "../custom-button/CustomButton";
+import { createModule } from "../../redux/course/course.actions";
+import { connect } from "react-redux";
+import { alertAction } from "../../redux/alert/alertAction";
 
-const CreateModuleForm = () => {
+const CreateModuleForm = ({ createModule, alertAction }) => {
 	const { register, handleSubmit, errors } = useForm();
 	const [formData, setFormData] = useState({
-		email: "",
-		password: "",
+		moduleNo: "",
+		moduleTitle: "",
 	});
-	const onSubmithandler = (e) => {
-		console.log(formData);
-		e.preventDefault();
+	const { courseId } = useParams();
+	const onSubmithandler = () => {
+		createModule(formData, courseId);
+		setFormData({ moduleNo: "", moduleTitle: "" });
 	};
 	const onChangeHandler = (e) => {
 		setFormData({
@@ -19,52 +24,38 @@ const CreateModuleForm = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
+	const { moduleNo, moduleTitle } = formData;
 	return (
 		<div className="create-module-form">
 			<form onSubmit={handleSubmit(onSubmithandler)}>
 				<input
 					type="text"
-					name="title"
+					name="moduleNo"
+					placeholder="Module No"
+					value={moduleNo}
 					ref={register({ required: true })}
-					placeholder="Course Title"
 					onChange={onChangeHandler}
 				/>
-				{errors.title && "title require"}
+				{errors.moduleNo && "No require"}
 				<input
 					type="text"
-					name="thumbnail"
+					name="moduleTitle"
+					placeholder="Module Title"
+					value={moduleTitle}
 					ref={register({ required: true })}
-					placeholder="Thumbnail Link"
 					onChange={onChangeHandler}
 				/>
-				{errors.thumbnail && "thumbnail require"}
-				<input
-					type="text"
-					name="price"
-					ref={register({ required: true })}
-					placeholder="Price"
-					onChange={onChangeHandler}
-				/>
-				{errors.price && "Price require"}
-				<input
-					type="text"
-					name="author"
-					ref={register({ required: true })}
-					placeholder="Author"
-					onChange={onChangeHandler}
-				/>
-				{errors.author && "author require"}
-				<textarea
-					name="description"
-					rows="3"
-					ref={register({ required: true })}
-					placeholder="Description in Bangle"
-					onChange={onChangeHandler}></textarea>
-				{errors.description && "description require"}
-				<CustomButton type="submit">Add Module</CustomButton>
+				{errors.moduleTitle && "moduleTitle require"}
+
+				<div className="custom-btn-group">
+					<CustomButton type="submit">Add Module</CustomButton>
+					<Link to="/dashboard">
+						<CustomButton>Back</CustomButton>
+					</Link>
+				</div>
 			</form>
 		</div>
 	);
 };
 
-export default CreateModuleForm;
+export default connect(null, { createModule, alertAction })(CreateModuleForm);

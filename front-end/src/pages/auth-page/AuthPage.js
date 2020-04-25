@@ -10,11 +10,11 @@ const AuthPage = () => {
 			behavior: "smooth",
 		});
 	});
-
 	///TOGGLE HANDLER
 	const toggleHandler = () => {
 		setToggle(!toggle);
 	};
+
 	return (
 		<div className="auth-page">
 			<div className="container">

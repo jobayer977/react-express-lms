@@ -24,3 +24,7 @@
 .tb-author {
 	text-align: left !important;
 }
+.course-list-content {
+	overflow-y: scroll;
+	height: 70vh;
+}

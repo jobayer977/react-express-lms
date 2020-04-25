@@ -10,7 +10,6 @@ import EventRoundedIcon from "@material-ui/icons/EventRounded";
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import NoteAddOutlinedIcon from "@material-ui/icons/NoteAddOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
-
 import DashboardBlock from "../dashboard-block/DashboardBlock";
 import CustomTitle from "../custom-title/CustomTitle";
 import CreateCourseForm from "../create-course-form/CreateCourseForm";

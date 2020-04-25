@@ -3,14 +3,26 @@ import "./module-action-page.css";
 import CreateModuleForm from "../../components/create-module-form/CreateModuleForm";
 import CustomTitle from "../../components/custom-title/CustomTitle";
 import DashboardModuleList from "../../components/dashboard-module-list/DashboardModuleList";
+import Alert from "../../components/utils/Alert";
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
-const ModuleActionPage = () => {
+const ModuleActionPage = ({ courses }) => {
+	useEffect(() => {
+		window.scrollTo({
+			top: "200",
+			behavior: "smooth",
+		});
+	});
+	const { courseId } = useParams();
+	const filterCourse = courses.find((course) => course._id === courseId);
 	return (
 		<div className="admin-dashboard-module-page">
 			<div className="container">
 				<CustomTitle
 					bold="Module List of"
-					thin="React Redux completed"
+					thin={filterCourse.title}
 					tagline="Show all module in this course"
 					medium
 				/>
@@ -21,6 +33,7 @@ const ModuleActionPage = () => {
 						</div>
 					</div>
 					<div className="col-md-6">
+						<Alert />
 						<CreateModuleForm />
 					</div>
 				</div>
@@ -29,4 +42,8 @@ const ModuleActionPage = () => {
 	);
 };
 
-export default ModuleActionPage;
+const mapStateToProps = (state) => ({
+	courses: state.course.data,
+});
+
+export default connect(mapStateToProps)(ModuleActionPage);

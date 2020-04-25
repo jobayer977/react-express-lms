@@ -1,4 +1,8 @@
-import { CREATE_COURSE, GET_ALL_COURSE } from "../course/course.types";
+import {
+	CREATE_COURSE,
+	GET_ALL_COURSE,
+	UPDATE_MODULE,
+} from "../course/course.types";
 import axios from "axios";
 import { alertAction } from "../alert/alertAction";
 
@@ -11,7 +15,6 @@ export const getAllCourse = () => async (dispatch) => {
 			payload: res.data,
 		});
 	} catch (e) {
-		console.log(e.message);
 		dispatch(alertAction(e.message, "danger"));
 	}
 };
@@ -44,9 +47,76 @@ export const createCourse = ({
 		});
 		dispatch(alertAction("Course created", "success"));
 	} catch (e) {
-		const errors = e.response.errors;
-		if (errors) {
-			dispatch(alertAction(errors, "danger"));
-		}
+		dispatch(alertAction(e.message, "danger"));
+	}
+};
+//Create module
+export const createModule = (data, id) => async (dispatch) => {
+	const config = {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
+	const body = JSON.stringify({ ...data });
+	try {
+		const res = await axios.put(`/api/course/module/${id}`, body, config);
+		dispatch({
+			type: UPDATE_MODULE,
+			payload: res.data,
+		});
+		dispatch(alertAction("Module created", "success"));
+	} catch (e) {
+		dispatch(alertAction(e.message, "danger"));
+	}
+};
+//Create lesson
+export const createLesson = (data, courseId, moduleId) => async (dispatch) => {
+	const config = {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
+	const body = JSON.stringify({ ...data });
+	try {
+		const res = await axios.put(
+			`/api/course/lesson/${courseId}/${moduleId}`,
+			body,
+			config
+		);
+		dispatch({
+			type: UPDATE_MODULE,
+			payload: res.data,
+		});
+		dispatch(alertAction("Lesson created", "success"));
+	} catch (e) {
+		dispatch(alertAction(e.message, "danger"));
+	}
+};
+//Create teacher's note
+export const createTeachersNote = (
+	data,
+	courseId,
+	moduleId,
+	lessonId
+) => async (dispatch) => {
+	const config = {
+		headers: {
+			"Content-Type": "application/json",
+		},
+	};
+	const body = JSON.stringify({ ...data });
+	try {
+		const res = await axios.put(
+			`/api/course/note/${courseId}/${moduleId}/${lessonId}`,
+			body,
+			config
+		);
+		dispatch({
+			type: UPDATE_MODULE,
+			payload: res.data,
+		});
+		dispatch(alertAction("Teacher's notes created", "success"));
+	} catch (e) {
+		dispatch(alertAction(e.message, "danger"));
 	}
 };
