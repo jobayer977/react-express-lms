@@ -11,7 +11,6 @@ const CourseInfo = ({ course, enrolledCourse, profile, history }) => {
 		profile &&
 		profile.courses &&
 		profile.courses.enrolled.find((x) => x._id === course._id);
-	console.log(findCourse);
 	return (
 		<div className="course-info-widget">
 			<Alert />

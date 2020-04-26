@@ -29,7 +29,6 @@ const SignInBlock = ({
 			formData.email,
 			formData.password
 		);
-		console.log(signInInfo);
 
 		if (signInInfo) {
 			if (signInInfo.response) {

@@ -6,8 +6,6 @@ import { activeLesson } from "../../redux/profile/profile.actons";
 import { connect } from "react-redux";
 
 const CourseLessonBlock = ({ course, activeLesson, profile }) => {
-	console.log(course);
-
 	return (
 		<div className="course-lesson-block">
 			<h1>

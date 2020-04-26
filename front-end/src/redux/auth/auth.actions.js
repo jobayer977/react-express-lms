@@ -103,7 +103,6 @@ export const signIn = ({ email, uid }) => async (dispatch) => {
 			type: LOGIN_SUCCESS,
 			payload: res.data,
 		});
-		console.log(res);
 		dispatch(loadUser());
 	} catch (e) {
 		dispatch({
