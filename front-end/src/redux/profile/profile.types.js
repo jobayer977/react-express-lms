@@ -1,0 +1,2 @@
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const ACTIVE_LESSON = "ACTIVE_LESSON";

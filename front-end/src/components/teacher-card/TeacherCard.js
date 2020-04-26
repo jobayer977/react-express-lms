@@ -14,13 +14,13 @@ const TeacherCard = () => {
 						<div className="dark-overlay"></div>
 						<div className="hover-content">
 							<div className="teacher-link">
-								<a href="/">
+								<a href="https://www.fb.com/jobayerdev" target="_blank">
 									<i className="fa fa-facebook"></i>
 								</a>
-								<a href="/">
+								<a href="https://www.twitter.com/jobayerdev" target="_blank">
 									<i className="fa fa-twitter"></i>
 								</a>
-								<a href="/">
+								<a href="https://www.github.com/jobayerdev" target="_blank">
 									<i className="fa fa-github"></i>
 								</a>
 							</div>

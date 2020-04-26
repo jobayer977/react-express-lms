@@ -7,7 +7,7 @@ import StudentDashboardPage from "../student-dashboard/StudentDashboardPage";
 const DashboardPage = ({ authState: { user } }) => {
 	return (
 		<div className="dashboard-page">
-			{user && user.membership == "admin" ? (
+			{user && user.membership === "admin" ? (
 				<AdminDashboardPage />
 			) : (
 				<StudentDashboardPage />

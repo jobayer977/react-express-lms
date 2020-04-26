@@ -109,7 +109,7 @@ router.put("/enrolled/:courseId", auth, async (req, res) => {
 		const enrolledCourse = profile.courses.enrolled.map((x) => x._id);
 		const enrolledCourseIdx = enrolledCourse.indexOf(req.params.courseId);
 		if (enrolledCourseIdx !== -1) {
-			res.json({ msg: "Already Enrolled in this course " });
+			return res.status(400).json({ errors: [{ msg: "Already Enrolled" }] });
 		} else {
 			//Update course students with user name and uid
 			const newStudent = {
@@ -123,7 +123,7 @@ router.put("/enrolled/:courseId", auth, async (req, res) => {
 			await profile.save();
 			await course.save();
 			//return course response
-			res.json(course);
+			res.json(profile);
 		}
 	} catch (error) {
 		return res.status(404).json({ msg: error.message });

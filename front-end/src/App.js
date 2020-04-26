@@ -19,6 +19,7 @@ import UpdateLessonTeacherNotePage from "./pages/update-lesson-techers-note/Upda
 import setAuthToken from "./util/setAuthToken";
 import { loadUser } from "./redux/auth/auth.actions";
 import { getAllCourse } from "./redux/course/course.actions";
+import PrivateRoute from "./util/PrivateRoute";
 
 if (localStorage.token) {
 	setAuthToken(localStorage.token);
@@ -27,32 +28,37 @@ function App({ authState: { isAuthenticated } }) {
 	useEffect(() => {
 		store.dispatch(loadUser());
 		store.dispatch(getAllCourse());
-	}, [loadUser, getAllCourse]);
+	}, []);
 	return (
 		<Fragment>
 			<HeaderBlock />
 			<HeroSection />
 			<Switch>
 				<Route exact path="/" component={HomePage} />
-				<Route path="/course-detail" component={CourseDetailPage} />
 				<Route
 					path="/auth"
 					render={() => (isAuthenticated ? <Redirect to="/" /> : <AuthPage />)}
 				/>
-				<Route path="/dashboard" component={DashboardPage} />
 				<Route
-					path="/course-module-action/:courseId"
-					component={ModuleActionPage}
+					exact
+					path="/course-detail/:courseId"
+					component={CourseDetailPage}
 				/>
-				<Route path="/lesson" component={CourseLessonPage} />
-				<Route
-					path="/course-lesson-action/:courseId/:moduleId"
-					component={LessonActionPage}
-				/>
-				<Route
-					path="/course-lesson-note-update/:courseId/:moduleId/:lessonId"
-					component={UpdateLessonTeacherNotePage}
-				/>
+				<PrivateRoute path="/dashboard">
+					<DashboardPage />
+				</PrivateRoute>
+				<PrivateRoute path="/lesson/:courseId">
+					<CourseLessonPage />
+				</PrivateRoute>
+				<PrivateRoute path="/course-module-action/:courseId">
+					<ModuleActionPage />
+				</PrivateRoute>
+				<PrivateRoute path="/course-lesson-action/:courseId/:moduleId">
+					<LessonActionPage />
+				</PrivateRoute>
+				<PrivateRoute path="/course-lesson-note-update/:courseId/:moduleId/:lessonId">
+					<UpdateLessonTeacherNotePage />
+				</PrivateRoute>
 			</Switch>
 			<FooterBlock />
 		</Fragment>

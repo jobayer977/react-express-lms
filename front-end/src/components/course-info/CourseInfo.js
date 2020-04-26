@@ -1,29 +1,44 @@
 import React from "react";
 import "./course-info.css";
 import CustomButton from "../custom-button/CustomButton";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { enrolledCourse } from "../../redux/profile/profile.actons";
+import { connect } from "react-redux";
+import Alert from "../utils/Alert";
 
-const CourseInfo = () => {
+const CourseInfo = ({ course, enrolledCourse, profile, history }) => {
+	const findCourse =
+		profile &&
+		profile.courses &&
+		profile.courses.enrolled.find((x) => x._id === course._id);
+	console.log(findCourse);
 	return (
 		<div className="course-info-widget">
+			<Alert />
 			<h1>
-				Price <strong>FREE</strong>
+				Price <strong>{course.price.toUpperCase()}</strong>
 			</h1>
-			<Link to="/lesson">
-				<CustomButton>Enroll This Course</CustomButton>
-			</Link>
+			{findCourse ? (
+				<CustomButton
+					onClick={(e) => {
+						history.push(`/lesson/${course._id}`);
+					}}>
+					Continue Course
+				</CustomButton>
+			) : (
+				<CustomButton
+					onClick={(e) => {
+						enrolledCourse(course._id);
+					}}>
+					Enroll This Course
+				</CustomButton>
+			)}
 			<ul>
 				<li>
-					<span>Lectures</span> <span>20 Lectures</span>
+					<span>Module</span> <span>{course.outline.length} Module</span>
 				</li>
 				<li>
 					<span>Language</span> <span>Bangla</span>
-				</li>
-				<li>
-					<span>Video</span> <span>8 Hours</span>
-				</li>
-				<li>
-					<span>Duration</span> <span>30 Days</span>
 				</li>
 				<li>
 					<span>Includes</span> <span>Source Code</span>
@@ -33,4 +48,10 @@ const CourseInfo = () => {
 	);
 };
 
-export default CourseInfo;
+const mapStateToProps = (state) => ({
+	profile: state.profile.data,
+});
+
+export default withRouter(
+	connect(mapStateToProps, { enrolledCourse })(CourseInfo)
+);

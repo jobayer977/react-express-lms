@@ -1,9 +1,10 @@
 import React from "react";
 import "./profile-block.styles.css";
 import CustomTitle from "../custom-title/CustomTitle";
-import CustomButton from "../custom-button/CustomButton";
+import { connect } from "react-redux";
 
-const ProfileBlock = () => {
+const ProfileBlock = ({ profile }) => {
+	const { displayName, email, avatar, membership } = profile;
 	return (
 		<div className="dashboard-profile-block">
 			<CustomTitle
@@ -13,20 +14,21 @@ const ProfileBlock = () => {
 			/>
 			<div className="dashboard-profile-content">
 				<div className="dashboard-profile-card">
-					<img
-						src="https://secure.gravatar.com/avatar/f3d8b736f7d03ca76e6da1ae26fd7259?s=150&d=mm&r=g"
-						alt="prifileimg"
-					/>
+					<img src={avatar} alt="fd" />
 					<div className="profile-content">
-						<h4>Jobayer Hossain</h4>
-						<p>Jobayerhossain977@Gmail.com</p>
-						<p>Membership 4 years</p>
+						<h4>{displayName}</h4>
+						<p>{email}</p>
+						<p>Membership {membership}</p>
 					</div>
-					<CustomButton>Logout</CustomButton>
+					{/* <CustomButton>Logout</CustomButton> */}
 				</div>
 			</div>
 		</div>
 	);
 };
 
-export default ProfileBlock;
+const mapStateToProps = (state) => ({
+	profile: state.profile.data,
+});
+
+export default connect(mapStateToProps, {})(ProfileBlock);

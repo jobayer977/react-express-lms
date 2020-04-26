@@ -53,7 +53,10 @@ export const registerUser = ({ uid, displayName, email, avatar }) => async (
 		});
 		dispatch(loadUser());
 	} catch (e) {
-		dispatch(alertAction(e.message, "danger"));
+		const errors = e.response.data.errors;
+		if (errors) {
+			errors.map((x) => dispatch(alertAction(x.msg, "danger")));
+		}
 	}
 };
 // SIGN IN WITH GOOGLE

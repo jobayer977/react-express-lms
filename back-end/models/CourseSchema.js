@@ -51,11 +51,17 @@ const CourseSchema = new mongoose.Schema({
 					lessonNo: {
 						type: Number,
 					},
+					moduleNo: {
+						type: String,
+					},
 					lessonTitle: {
 						type: String,
 					},
 					lessonDesc: {
 						type: String,
+					},
+					status: {
+						type: Boolean,
 					},
 					teachersNote: [
 						{

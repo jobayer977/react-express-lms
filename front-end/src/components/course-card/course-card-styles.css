@@ -4,6 +4,7 @@
 	position: relative;
 	margin-bottom: 25px;
 	cursor: pointer;
+	height: 320px;
 }
 
 .course-price {
@@ -155,8 +156,21 @@
 }
 
 .course-item img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 	transition: all 1.5s ease-in-out;
 }
 .course-item:hover.course-item img {
 	transform: scale(1.1);
+}
+.course-item {
+	height: 500px;
+	position: relative;
+}
+
+.course-viewer.ul-li {
+	position: a;
+	position: absolute;
+	bottom: 0;
 }

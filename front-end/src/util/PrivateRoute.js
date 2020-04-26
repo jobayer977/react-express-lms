@@ -7,14 +7,23 @@ const PrivateRoute = ({ component, auth, children, ...rest }) => {
 		<Route
 			{...rest}
 			render={({ location }) =>
-				auth ? children : <Redirect to={history.goBack()} />
+				auth ? (
+					children
+				) : (
+					<Redirect
+						to={{
+							pathname: "/auth",
+							state: { from: location },
+						}}
+					/>
+				)
 			}
 		/>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	auth: state.user.isAuthenticated,
+	auth: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

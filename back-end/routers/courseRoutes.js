@@ -20,8 +20,6 @@ router.post("/", auth, async (req, res) => {
 	const { title, thumbnail, price, author, description } = req.body;
 	try {
 		const user = await User.findOne({ uid: res.authToken.id });
-		console.log(user);
-
 		if (user.membership === "student") {
 			res.json({
 				errors: "You don't create Courses",
@@ -79,10 +77,12 @@ router.put("/lesson/:courseId/:moduleId", auth, async (req, res) => {
 		//Create new lesson in object
 		const newCourse = {
 			lessonNo,
+			moduleNo: req.params.moduleId,
 			lessonTitle,
 			lessonDesc,
 			duration,
 			video,
+			status: false,
 			download: { attachment, attachmentLink },
 		};
 		//Figure out module by module id
@@ -160,6 +160,32 @@ router.put(
 			course.save();
 			// response course object
 			res.json(course);
+		} catch (e) {
+			res.json({ msg: e.message });
+		}
+	}
+);
+
+//Lesson done
+router.put(
+	"/complected/:courseId/:moduleId/:lessonId",
+	auth,
+	async (req, res) => {
+		try {
+			//Get course schema by id
+			const profile = await Profile.findOne({ user: res.authToken.id });
+
+			//Course into enrolled array
+			const course = profile.courses.enrolled.find(
+				(course) => course._id == req.params.courseId
+			);
+			const module = course.outline.find((x) => x._id == req.params.moduleId);
+			const lesson = module.lesson.find((x) => x._id == req.params.lessonId);
+			lesson.status = true;
+			// Save into Database
+			profile.save();
+			// response course object
+			res.json(profile);
 		} catch (e) {
 			res.json({ msg: e.message });
 		}

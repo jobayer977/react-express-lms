@@ -53,7 +53,6 @@ const CreateLessonForm = ({ createLesson }) => {
 				<input
 					type="text"
 					name="lessonNo"
-					value={lessonNo}
 					ref={register({ required: true })}
 					value={lessonNo}
 					placeholder="Lesson No"

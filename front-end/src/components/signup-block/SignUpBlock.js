@@ -29,6 +29,7 @@ const SignUpBlock = ({
 		setLoading(true);
 		if (formData.password1 !== formData.password2) {
 			alertAction("Password doesn't match", "danger");
+			setLoading(false);
 		} else {
 			const signUp = await signUpNewUser(
 				formData.email,

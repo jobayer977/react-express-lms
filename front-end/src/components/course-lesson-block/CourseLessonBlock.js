@@ -2,8 +2,12 @@ import React from "react";
 import "./course-lesson-block.styles.css";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import { activeLesson } from "../../redux/profile/profile.actons";
+import { connect } from "react-redux";
 
-const CourseLessonBlock = () => {
+const CourseLessonBlock = ({ course, activeLesson, profile }) => {
+	console.log(course);
+
 	return (
 		<div className="course-lesson-block">
 			<h1>
@@ -12,104 +16,35 @@ const CourseLessonBlock = () => {
 			<div className="course-lesson-list">
 				<div className="course-lesson-item">
 					<Accordion defaultActiveKey="0">
-						<Card>
-							<Accordion.Toggle as={Card.Header} eventKey="0">
-								<span>
-									<strong>01</strong>React Redux Javascript
-								</span>
-								{/* <i className="fas fa-angle-down rotate-icon"></i> */}
-							</Accordion.Toggle>
-							<Accordion.Collapse eventKey="0">
-								<Card.Body>
-									<ul>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-									</ul>
-								</Card.Body>
-							</Accordion.Collapse>
-						</Card>
-						<Card>
-							<Accordion.Toggle as={Card.Header} eventKey="1">
-								<span>
-									<strong>02</strong>React Redux Javascript
-								</span>
-								{/* <i className="fas fa-angle-down rotate-icon"></i> */}
-							</Accordion.Toggle>
-							<Accordion.Collapse eventKey="1">
-								<Card.Body>
-									<ul>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-										<li>
-											<i className="fa fa-youtube"></i>
-											<span>
-												React JS Bangla tutorial | EventHandeling,
-												ReactDeveloperTools | Class # 5
-											</span>
-										</li>
-									</ul>
-								</Card.Body>
-							</Accordion.Collapse>
-						</Card>
+						{course &&
+							course.outline.map((module, i) => (
+								<Card key={i}>
+									<Accordion.Toggle as={Card.Header} eventKey={i + 1}>
+										<span>
+											<strong>{module.moduleNo}</strong> {module.moduleTitle}
+										</span>
+									</Accordion.Toggle>
+									<Accordion.Collapse eventKey={i + 1}>
+										<Card.Body>
+											<ul>
+												{module.lesson.map((x, i) => (
+													<li key={i}>
+														{x.status === true ? (
+															<i class="fas fa-check-circle"></i>
+														) : (
+															<i className="fa fa-youtube"></i>
+														)}
+
+														<span onClick={(e) => activeLesson(x, module._id)}>
+															{x.lessonNo} {x.lessonTitle}
+														</span>
+													</li>
+												))}
+											</ul>
+										</Card.Body>
+									</Accordion.Collapse>
+								</Card>
+							))}
 					</Accordion>
 				</div>
 			</div>
@@ -117,4 +52,8 @@ const CourseLessonBlock = () => {
 	);
 };
 
-export default CourseLessonBlock;
+const mapStateToProps = (state) => ({
+	profile: state.profile.data,
+});
+
+export default connect(mapStateToProps, { activeLesson })(CourseLessonBlock);
