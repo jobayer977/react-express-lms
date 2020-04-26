@@ -1,8 +1,6 @@
 .teacher-card {
 	text-align: center;
 	padding: 20px 0px;
-	/* box-shadow: 2px 0px 6px #dedede; */
-	/* width: 300px; */
 	margin: 0 auto;
 }
 
@@ -10,11 +8,11 @@
 	position: relative;
 	width: 200px;
 	margin: 0 auto;
-	height: 200px;
+	height: 200px !important;
 }
 .teacher-avater img {
-	height: 100%;
-	width: 100%;
+	height: 100% !important;
+	width: 100% !important;
 	object-fit: cover;
 }
 .teacher-avater img {

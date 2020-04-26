@@ -19,7 +19,7 @@ const inButtonLoader = css`
 export const PulseLoaderSpinner = (props) => {
 	return (
 		<Fragment>
-			<PulseLoader css={override} size={30} color={"#ff5e3a"} loading={true} />
+			<PulseLoader css={override} size={30} color={"#01a6fd"} loading={true} />
 		</Fragment>
 	);
 };
