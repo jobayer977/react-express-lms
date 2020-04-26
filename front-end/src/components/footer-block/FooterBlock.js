@@ -1,6 +1,7 @@
 import React from "react";
 import "./footer-block.styles.css";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const FooterBlock = () => {
 	return (
@@ -16,19 +17,19 @@ const FooterBlock = () => {
 						<div className="col-md-4">
 							<ul>
 								<li>
-									<a href="/">
+									<Link to="/">
 										<i className="fa fa-map"></i>Dhaka Bangladesh
-									</a>
+									</Link>
 								</li>
 								<li>
-									<a href="/">
+									<Link to="/">
 										<i className="fa fa-phone"></i>01973753854
-									</a>
+									</Link>
 								</li>
 								<li>
-									<a href="/">
+									<Link to="/">
 										<i className="fa fa-phone"></i>oneness@gmail.com
-									</a>
+									</Link>
 								</li>
 							</ul>
 						</div>
@@ -42,24 +43,24 @@ const FooterBlock = () => {
 							<div className="social-link">
 								<ul>
 									<li>
-										<a href="/">
+										<Link to="/">
 											<i className="fa fa-facebook"></i>
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a href="/">
+										<Link to="/">
 											<i className="fa fa-twitter"></i>
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a href="/">
+										<Link to="/">
 											<i className="fa fa-github"></i>
-										</a>
+										</Link>
 									</li>
 									<li>
-										<a href="/">
+										<Link to="/">
 											<i className="fa fa-google-plus"></i>
-										</a>
+										</Link>
 									</li>
 								</ul>
 							</div>

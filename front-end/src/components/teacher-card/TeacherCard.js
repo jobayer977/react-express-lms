@@ -1,5 +1,6 @@
 import React from "react";
 import "./teacher-card.styles.css";
+import { Link } from "react-router-dom";
 
 const TeacherCard = () => {
 	return (
@@ -7,22 +8,19 @@ const TeacherCard = () => {
 			<div className="col-md-12 text-center">
 				<div className="teacher-card">
 					<div className="teacher-avater">
-						<img
-							src="http://jthemes.org/html/genius-course/assets/img/teacher/tb-1.png"
-							alt=""
-						/>
+						<img src="https://i.ibb.co/8cXT1ZL/IMG-2796.jpg" alt="" />
 						<div className="dark-overlay"></div>
 						<div className="hover-content">
 							<div className="teacher-link">
-								<a href="https://www.fb.com/jobayerdev" target="_blank">
+								<Link to="https://www.fb.com/jobayerdev" target="_blank">
 									<i className="fa fa-facebook"></i>
-								</a>
-								<a href="https://www.twitter.com/jobayerdev" target="_blank">
+								</Link>
+								<Link to="https://www.twitter.com/jobayerdev" target="_blank">
 									<i className="fa fa-twitter"></i>
-								</a>
-								<a href="https://www.github.com/jobayerdev" target="_blank">
+								</Link>
+								<Link to="https://www.github.com/jobayerdev" target="_blank">
 									<i className="fa fa-github"></i>
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>

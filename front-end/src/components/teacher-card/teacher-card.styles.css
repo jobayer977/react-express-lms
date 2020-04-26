@@ -10,8 +10,13 @@
 	position: relative;
 	width: 200px;
 	margin: 0 auto;
+	height: 200px;
 }
-
+.teacher-avater img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
 .teacher-avater img {
 	max-width: 100%;
 	height: auto;

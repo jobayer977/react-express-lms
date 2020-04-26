@@ -1,5 +1,6 @@
 import React from "react";
 import "./blog-card.styles.css";
+import { Link } from "react-router-dom";
 
 const BlogCard = () => {
 	return (
@@ -18,7 +19,9 @@ const BlogCard = () => {
 						</div>
 						<div className="blog-text">
 							<div className="blog-title">
-								<a href="/">Fully Responsive Web Design &amp; Development.</a>
+								<Link to="/">
+									Fully Responsive Web Design &amp; Development.
+								</Link>
 							</div>
 						</div>
 						<div className="course-meta">
@@ -42,7 +45,9 @@ const BlogCard = () => {
 						</div>
 						<div className="blog-text">
 							<div className="blog-title">
-								<a href="/">Fully Responsive Web Design &amp; Development.</a>
+								<Link to="/">
+									Fully Responsive Web Design &amp; Development.
+								</Link>
 							</div>
 						</div>
 						<div className="course-meta">
@@ -66,7 +71,9 @@ const BlogCard = () => {
 						</div>
 						<div className="blog-text">
 							<div className="blog-title">
-								<a href="/">Fully Responsive Web Design &amp; Development.</a>
+								<Link to="/">
+									Fully Responsive Web Design &amp; Development.
+								</Link>
 							</div>
 						</div>
 						<div className="course-meta">
@@ -90,7 +97,9 @@ const BlogCard = () => {
 						</div>
 						<div className="blog-text">
 							<div className="blog-title">
-								<a href="/">Fully Responsive Web Design &amp; Development.</a>
+								<Link to="/">
+									Fully Responsive Web Design &amp; Development.
+								</Link>
 							</div>
 						</div>
 						<div className="course-meta">

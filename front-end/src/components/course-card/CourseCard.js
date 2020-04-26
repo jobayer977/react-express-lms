@@ -23,7 +23,7 @@ const CourseCard = ({ course }) => {
 								<span>{price.toUpperCase()}</span>
 							</div>
 							<div className="course-details-btn">
-								<a href="/">COURSE DETAIL</a>
+								<Link to="/">COURSE DETAIL</Link>
 							</div>
 						</div>
 						<div className="course-item-text">
